@@ -28,3 +28,21 @@ Calculating an optical spectrum with this class has five steps.
 5. Calculate the spectrum with .CalcSpectrum()
 
 There are several checks in the class that will stop you skipping a step. In this version, only selection rules for linear polarization are implemented. 
+
+## FiveLevelModel()
+
+This class generates the functions required to numerically integrate the rate equations for a five-level system, with a specific view towards simulating color-center like system. (Two ground states, two excited states and a shelving state are assumed in the form of the parameter inputs.)
+
+The states are labelled and ordered: A<sub>G</sub>, B<sub>G</sub>, A<sub>E</sub>, B<sub>E</sub>, S
+
+All rates are assumed zero by default - the use <b>must</b> input some parameters before the rest of the functions will allow themselves to be used. 
+
+The rates incorporated into this version are: \
+k<sub>r,A</sub>, k<sub>r,B</sub> - the radiative rates of A and B, respectively \
+&phi; - branching ratio of the radiative decay between A and B (i.e. what fraction A-A, A-B)
+k<sub>up,A</sub>, k<sub>up,B</sub> - optical excitation rates of A (B) spin-conserving transition \
+k<sub>up,AB</sub>, k<sub>up,BA</sub> - optical excitation rates of the non-spin-conserving transitions. This is related to the branching ratio, &phi;, but these two parameters do not have a simple relation here, because k<sub>up,AB</sub> also depends on the detuning of the optical excitation from a particular transition. \
+Spin-lattice relaxation rate - ground state T<sub>1</sub> \
+ISC - intersystem crossing rate from excited state to shelving state. Currently, both excited states are assumed to have the same ISC rate. This will be updated in a later version. \
+ShG - Shelving state to ground state rate (inverse shelving state lifetime) \
+&phi;<sub>s</sub> - branching ratio of shelving state relaxation between A<sub>G</sub>, B<sub>G</sub>. 0 is completely into A, 1 is equally into A, B.
