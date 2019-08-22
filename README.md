@@ -46,3 +46,12 @@ Spin-lattice relaxation rate - ground state T<sub>1</sub> \
 ISC - intersystem crossing rate from excited state to shelving state. Currently, both excited states are assumed to have the same ISC rate. This will be updated in a later version. \
 ShG - Shelving state to ground state rate (inverse shelving state lifetime) \
 &phi;<sub>s</sub> - branching ratio of shelving state relaxation between A<sub>G</sub>, B<sub>G</sub>. 0 is completely into A, 1 is equally into A, B.
+
+Calculating the kinetic traces has X steps
+1. Create a dictionary with the parameters for the ratematrix (see above for definitions). 
+2. Update the class parameters with this using the .SetRateDict() function. 
+3. Build the class Hamiltonian with .BuildRateMatrix(). 
+4. Build a parameter dictionary and update the class parameters with this using the .SetSolverParameters() function. 
+5. Use the ODE solver with .SolveRateEquations(). 
+
+The output is stored as .Results in the class.
