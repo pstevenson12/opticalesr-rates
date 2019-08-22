@@ -319,7 +319,7 @@ class FiveLevelModel():
         self.ratemat[4,3] = self.ratedict['ISC']
         self.ratemat[4,4] = -(1+self.ratedict['phi_s'])*self.ratedict['ShG']
         
-    def SetSolverParamaters(self,newdict):
+    def SetSolverParameters(self,newdict):
         self.UpdatedFlag = True
         self.ODEdict.update(newdict)
     
